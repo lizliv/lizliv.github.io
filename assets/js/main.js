@@ -41,6 +41,15 @@
 			});
 
 		}
+		
+	// // Dropdowns.
+	// $('#nav > ul').dropotron({
+	// 	mode: 'fade',
+	// 	noOpenerFade: true,
+	// 	alignment: 'center',
+	// 	detach: false
+	// });
+
 
 	// Menu.
 		var $menu = $('#menu');
@@ -141,5 +150,56 @@
 						$menu._hide();
 
 			});
+			
+	// Nav.
+
+		// Title Bar.
+		$(
+			'<div id="titleBar">' +
+				'<a href="#navPanel" class="toggle"></a>' +
+				'<span class="title">' + $('#logo h1').html() + '</span>' +
+			'</div>'
+		)
+			.appendTo($body);
+
+	// Panel.
+		$(
+			'<div id="navPanel">' +
+				'<nav>' +
+					$('#nav').navList() +
+				'</nav>' +
+			'</div>'
+		)
+			.appendTo($body)
+			.panel({
+				delay: 500,
+				hideOnClick: true,
+				hideOnSwipe: true,
+				resetScroll: true,
+				resetForms: true,
+				side: 'left',
+				target: $body,
+				visibleClass: 'navPanel-visible'
+			});
 
 })(jQuery);
+
+// Get the button:
+let mybutton = document.getElementById("topBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "flex";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+} 
